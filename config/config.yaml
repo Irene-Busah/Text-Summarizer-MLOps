@@ -1,0 +1,13 @@
+artifacts_root: artifacts
+
+data_ingestion:
+  root_dir: artifacts/data_ingestion
+  source_URL: https://github.com/krishnaik06/datasets/raw/main/summarizer-data.zip
+  local_data_file: artifacts/data_ingestion/data.zip
+  unzip_dir: artifacts/data_ingestion
+
+data_transformation:
+  root_dir: artifacts/data_transformation
+  train_data_filepath: artifacts/data_ingestion/samsum-train.csv
+  test_data_filepath: artifacts/data_ingestion/samsum-test.csv
+  val_data_filepath: artifacts/data_ingestion/samsum-validation.csv
