@@ -7,7 +7,7 @@ Implement the configuration manager for the pipeline
 
 
 # libraries
-from src.textSummarizer.entity.entity import DataIngestionConfig
+from src.textSummarizer.entity.entity import DataIngestionConfig, DataTransformationConfig
 from src.textSummarizer.logging import logger
 from src.textSummarizer.utils.common import create_directories, read_yaml
 
@@ -34,3 +34,16 @@ class ConfigurationManager:
         )
 
         return data_ingestion_config
+    
+    # data transformation configuration
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        config = self.config.data_transformation
+        create_directories([config.root_dir])
+
+        data_transformation_config = DataTransformationConfig(
+            root_dir=config.root_dir,
+            data_filepath=config.data_filepath,
+            tokenizer_name=config.tokenizer_name
+        )
+
+        return data_transformation_config
