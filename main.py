@@ -10,6 +10,8 @@ The main project entry point to run the entire ML pipeline
 from src.textSummarizer.logging import logger
 from src.textSummarizer.pipeline.data_ingestion_pipeline import DataIngestionPipeline
 from src.textSummarizer.pipeline.data_transformation_pipeline import DataTransformationPipeline
+from src.textSummarizer.pipeline.model_training_pipeline import ModelTrainingPipeline
+from src.textSummarizer.pipeline.model_evaluation_pipeline import ModelEvaluationPipeline
 
 logger.info("Welcome to the Text Summarizer Project")
 
@@ -43,3 +45,36 @@ try:
 except Exception as e:
     logger.exception(e)
     raise e
+
+
+
+# =========================== Training ==============================
+
+STAGE_NAME = 'Model Training Stage'
+
+try:
+    logger.info(f"--------------------- {STAGE_NAME} Started Successfully ---------------------")
+    obj = ModelTrainingPipeline()
+    obj.initiate_model_training()
+
+    logger.info(f"--------------------- {STAGE_NAME} Completed Successfully ---------------------")
+
+except Exception as e:
+    logger.exception(e)
+    raise e
+
+
+# =============================== Evaluation ================================
+
+STAGE_NAME = 'Model Evaluation Stage'
+try:
+    logger.info(f"--------------- {STAGE_NAME} Started Successfully ---------------")
+    obj = ModelEvaluationPipeline()
+    obj.initiate_model_training()
+
+    logger.info(f"--------------- {STAGE_NAME} Completed Successfully -------------")
+
+except Exception as e:
+    logger.exception(e)
+    raise e
+
